@@ -52,6 +52,15 @@ Features
   * source venv/bin/activate
   * (venv) $ pip install Flask
 
+Third-Party Resources
+---------------------
+* Connect to AWS Management Console webpage - https://us-west-2.console.aws.amazon.com/console/home?nc2=h_ct&region=us-west-2&src=header-signin#
+* Connect to AWS via a different "ssh" port - https://askubuntu.com/questions/1019891/connecting-to-amazon-lightsail-ubuntu-server-using-different-ssh-port
+* Add Lightsail To AWS Management Console   - https://lightsail.aws.amazon.com/ls/webapp/us-west-2/instances/Ubuntu-512MB-Oregon-1/networking?#
+* Disallow remote access to PostgreSQL      - https://bosnadev.com/2015/12/15/allow-remote-connections-postgresql-database-server/
+* Deploy a Flask application on Ubuntu      - https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+* Run a Flask application on AWS            - https://www.datasciencebytes.com/bytes/2015/02/24/running-a-flask-app-on-aws-ec2/
+
 Postgres Database Tables
 ----------------------
 The Postgres database has three tables:
