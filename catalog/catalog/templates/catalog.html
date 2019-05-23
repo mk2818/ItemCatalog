@@ -1,0 +1,82 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<img src='/static/top-banner.jpg'>
+<h1 align='center'>Catalog</h1>
+
+<style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        /* Create three equal columns that floats next to each other */
+        .column {
+          float: left;
+          width: 33.33%;
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+</style>    
+
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+            
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+</div>
+
+
+<div class="row">
+    <div class="column">
+      <h2>Categories</h2>
+      {% for category in categories %}
+      <div>
+          <a href = "{{ url_for('showCatalogItems', category_name=category.name, items=items) }}" >{{ category.name }}</a><br/>
+
+          {% if category in userCategories %}
+	  <a href = "{{ url_for('editCategory', category_name=category.name) }}">Edit</a> | <a href = "{{ url_for('deleteCategory', category_name=category.name) }}"><span>Delete</span></a>
+          <br/>
+          {% endif %}
+          <br/>
+      </div>
+      {% endfor %}
+      <a href = "{{ url_for('newCategory') }}">Add New Category</a>
+    </div>
+
+    <div class="column">
+      <h2>Items</h2>
+      {% for item in items %}
+      <div>
+          <a href = "{{ url_for('showItemDescription', category_name=item.category.name, item_name=item.title) }}"><span>{{ item.title }} <i>({{ item.category.name }})</i></span></a>
+          <br/>
+      </div>
+      <br>
+      {% endfor %}
+      <a href = "{{ url_for('newItem') }}">Add New Item</a>
+    </div>
+
+    <div class="column">
+      <h2>JSON Representation</h2>
+      <a href = "{{ url_for('catalogJSON') }}">Show Catelog contents in JSON</a><br><br>
+      <a href = "{{ url_for('categoryJSON') }}">Show ALL Categories in JSON</a><br><br>
+      <a href = "{{ url_for('itemJSON') }}">Show ALL Items in JSON</a><br><br>
+      <a href = "{{ url_for('itemlist') }}">Show ONE Item in JSON</a><br>
+    </div>
+  </div> 
+</div>
+
+{% endblock %}
